@@ -8,6 +8,7 @@ export function* deleteCarRequest(api, carId, userId, token) {
     const { data } = yield call(api.deleteCar, carId, userId, token)
     yield put(deleteCarSuccess(data))
     setError('Car removed', 'success')
+    yield take(CarsTypes.GET_CARS_START)
   } catch (error) {
     yield put(deleteCarFail())
     yield put(setError(error.message, 'error'))

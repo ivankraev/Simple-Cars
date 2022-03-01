@@ -7,6 +7,7 @@ export function* editCarRequest(api, token, user, carData) {
     const { data } = yield call(api.editCar, token, user, carData)
     yield put(editCarSuccess(data))
     yield put(setError('Car updated', 'success'))
+    yield take(CarsTypes.GET_CARS_START)
   } catch (error) {
     yield put(editCarFail())
     yield put(setError(error.message, 'error'))

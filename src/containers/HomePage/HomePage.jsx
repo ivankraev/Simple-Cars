@@ -1,8 +1,8 @@
 import React from "react";
-import { tableTitleColumns } from "../../common/tableTitleColumns";
-import { useCrudActions } from "../../hooks/useActions";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
+import { tableTitleColumns } from "../../common/tableTitleColumns";
+import { useCrudActions } from "../../hooks/useActions";
 import MaterialTable from "material-table";
 
 const exampleData = [
@@ -24,11 +24,8 @@ const exampleData = [
 ];
 
 const HomePage = () => {
-  const [tableData, setTableData] = React.useState(exampleData);
-
-  // ALL ACTIONS
-  const { getCarsStart, createCarStart, deleteCarStart, editCarStart } =
-    useCrudActions();
+  // ALL CRUD ACTIONS
+  const { createCarStart, deleteCarStart, editCarStart } = useCrudActions();
   //USER AND CARS INFORMATION
   const token = useSelector((state) => state.login.user?.accessToken);
   const user = useSelector((state) => state.login.user);
@@ -55,21 +52,17 @@ const HomePage = () => {
           onRowAdd: (rowData) =>
             new Promise((resolve, reject) => {
               resolve();
-              setTableData([...tableData, rowData]);
+              createCarStart(token, user, rowData);
             }),
           onRowUpdate: (newRowData, oldRowData) =>
             new Promise((resolve, reject) => {
-              setTimeout(() => {
-                resolve();
-                console.log(newRowData);
-              }, 100);
+              resolve();
+              editCarStart(token, user, newRowData);
             }),
           onRowDelete: (selectedRow) =>
             new Promise((resolve, reject) => {
-              setTimeout(() => {
-                resolve();
-                console.log(selectedRow);
-              }, 100);
+              resolve();
+              deleteCarStart(token, user, selectedRow);
             }),
         }}
       />
