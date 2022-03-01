@@ -2,8 +2,7 @@ import { CarsTypes } from '../containers/HomePage/types'
 
 const INITIAL_STATE = {
   isLoading: false,
-  errorMsg: null,
-  errorType: null,
+
 }
 
 const removeCarReducer = (state = INITIAL_STATE, action) => {
@@ -12,19 +11,15 @@ const removeCarReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: true,
-        errorMsg: null,
       }
     case CarsTypes.REMOVE_CAR_SUCCESS:
       return {
-        errorMsg: { message: 'Removed succesfully' },
-        errorType: 'success',
+        ...state,
         isLoading: false,
       }
     case CarsTypes.REMOVE_CAR_FAIL:
       return {
         ...state,
-        errorMsg: action.payload,
-        errorType: 'error',
         isLoading: false,
       }
 

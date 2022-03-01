@@ -7,14 +7,17 @@ export const logInStart = (data) => ({
 
 export const logInSuccess = (user) => ({
   type: LogInTypes.LOGIN_SUCCESS,
-  payload: user,
+  payload: user
 })
-export const logInFail = (error) => ({
+export const logInFail = () => ({
   type: LogInTypes.LOGIN_FAIL,
-  payload: error,
 })
-export const resetError = () => ({
-  type: LogInTypes.ERROR_RESET,
+export const setError = (msg, errorType) => ({
+  type: LogInTypes.SET_ERROR,
+  payload: {
+    msg,
+    errorType
+  }
 })
 export const logOutSuccess = () => ({
   type: LogInTypes.LOGOUT_SUCCESS,

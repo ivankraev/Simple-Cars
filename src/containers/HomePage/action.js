@@ -7,9 +7,8 @@ export const getCarsSuccess = (cars) => ({
   type: CarsTypes.GET_CARS_SUCCESS,
   payload: cars,
 })
-export const getCarsFail = (error) => ({
+export const getCarsFail = () => ({
   type: CarsTypes.GET_CARS_FAIL,
-  payload: error,
 })
 
 export function createCarStart(token, data, user) {
@@ -22,16 +21,14 @@ export function createCarStart(token, data, user) {
     },
   }
 }
-export function createCarSuccess(newCar) {
+export function createCarSuccess() {
   return {
     type: CarsTypes.CREATE_CAR_SUCCESS,
-    payload: newCar,
   }
 }
-export function createCarFail(error) {
+export function createCarFail() {
   return {
     type: CarsTypes.CREATE_CAR_FAIL,
-    payload: error,
   }
 }
 export function deleteCarStart(carId, userId, token) {
@@ -49,10 +46,9 @@ export function deleteCarSuccess() {
     type: CarsTypes.REMOVE_CAR_SUCCESS,
   }
 }
-export function deleteCarFail(error) {
+export function deleteCarFail() {
   return {
     type: CarsTypes.REMOVE_CAR_FAIL,
-    payload: error,
   }
 }
 export function editCarStart(token, user, data) {
@@ -70,9 +66,8 @@ export function editCarSuccess() {
     type: CarsTypes.EDIT_CAR_SUCCESS,
   }
 }
-export function editCarFail(error) {
+export function editCarFail() {
   return {
     type: CarsTypes.EDIT_CAR_FAIL,
-    payload: error,
   }
 }

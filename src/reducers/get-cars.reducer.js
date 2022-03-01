@@ -3,8 +3,6 @@ import { CarsTypes } from '../containers/HomePage/types'
 const INITIAL_STATE = {
   cars: [],
   isLoading: false,
-  errorMsg: null,
-  errorType: null,
 }
 
 const getCarsReducer = (state = INITIAL_STATE, action) => {
@@ -13,7 +11,6 @@ const getCarsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: true,
-        errorMsg: null,
       }
     case CarsTypes.GET_CARS_SUCCESS:
       return {
@@ -24,8 +21,6 @@ const getCarsReducer = (state = INITIAL_STATE, action) => {
     case CarsTypes.GET_CARS_FAIL:
       return {
         ...state,
-        errorMsg: action.payload,
-        errorType: 'error',
         isLoading: false,
       }
 

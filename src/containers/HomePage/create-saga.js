@@ -1,13 +1,16 @@
 import { put, call, take } from 'redux-saga/effects'
 import { CarsTypes } from './types'
 import { createCarSuccess, createCarFail } from './action'
+import { setError } from '../LoginPage/action'
 
 export function* createCarRequest(api, token, user, carData) {
+
   try {
-    const { data } = yield call(api.editCar, token, user, carData)
+    const { data } = yield call(api.createCar, token, user, carData)
     yield put(createCarSuccess(data))
   } catch (error) {
-    yield put(createCarFail(error))
+    yield put(createCarFail())
+    yield put(setError(error.message, 'error'))
   }
 }
 export function* createCarStart(api) {
