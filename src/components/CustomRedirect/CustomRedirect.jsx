@@ -1,24 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom'
 // Redux
-import { useSelector, useDispatch } from "react-redux";
-import { redirect } from "./actions";
+import { useSelector } from 'react-redux'
 
 /** Redirect to pre-selected page */
 function CustomRedirect() {
   /** Object which contains parameters to next page {pathname: ... , state: ...} */
-  const { redirect } = useSelector((state) => state.redirect);
-  const dispatch = useDispatch();
-  const [redirectPath, setRedirectPath] = useState(redirect);
+  const { redirect } = useSelector((state) => state.redirect)
+  const [redirectPath, setRedirectPath] = useState(redirect)
 
   useEffect(() => {
     window.onpopstate = (e) => {
       /** Detect browser back button and reset redirectPath */
-      return setRedirectPath("");
-    };
+      return setRedirectPath('')
+    }
     /** Update redirectPath when the state from redux appear */
-    setRedirectPath(redirect);
-  }, [redirect]);
+    setRedirectPath(redirect)
+  }, [redirect])
 
   return redirectPath && redirectPath.destination ? (
     <Redirect
@@ -28,7 +26,7 @@ function CustomRedirect() {
         state: redirectPath.body,
       }}
     />
-  ) : null;
+  ) : null
 }
 
-export default CustomRedirect;
+export default CustomRedirect

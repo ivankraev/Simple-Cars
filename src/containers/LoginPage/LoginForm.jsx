@@ -1,32 +1,32 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Grid, Typography } from "@mui/material";
-import { useCallback } from "react";
-import { Link } from "react-router-dom";
-import { loginValidationSchema } from "../helpers/forms/schemas";
-import { routes } from "../../utils/routes";
-import { logInStart } from "./action";
-import "./LoginForm.scss";
-import carLogo from "../../resources/cars.png";
-import CustomForm from "../helpers/forms/CustomForm";
-import CustomTextField from "../helpers/forms/CustomTextField";
-import CustomSubmitButton from "../helpers/CustomSubmitButton";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Grid, Typography } from '@mui/material'
+import { useCallback } from 'react'
+import { Link } from 'react-router-dom'
+import { loginValidationSchema } from '../helpers/forms/schemas'
+import { routes } from '../../utils/routes'
+import { logInStart } from './action'
+import './LoginForm.scss'
+import carLogo from '../../resources/cars.png'
+import CustomForm from '../helpers/forms/CustomForm'
+import CustomTextField from '../helpers/forms/CustomTextField'
+import CustomSubmitButton from '../helpers/CustomSubmitButton'
 
 const initialValues = {
-  email: "",
-  password: "",
-};
+  email: '',
+  password: '',
+}
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state?.login?.isLoading);
+  const dispatch = useDispatch()
+  const isLoading = useSelector((state) => state?.login?.isLoading)
 
   const loginSubmit = useCallback(
     (data) => {
-      dispatch(logInStart(data));
+      dispatch(logInStart(data))
     },
-    [dispatch]
-  );
+    [dispatch],
+  )
 
   return (
     <Grid container direction="column" component="section">
@@ -46,7 +46,6 @@ const LoginForm = () => {
               name="email"
               required
               autoFocus
-              autoComplete="email"
             />
           </Grid>
           <Grid item xs={12}>
@@ -55,7 +54,6 @@ const LoginForm = () => {
               name="password"
               label="Password"
               required
-              autoComplete="password"
             />
           </Grid>
           <Grid item xs={12}>
@@ -77,13 +75,13 @@ const LoginForm = () => {
             <img
               src={carLogo}
               alt=""
-              style={{ width: "50%", marginTop: "50px" }}
+              style={{ width: '50%', marginTop: '50px' }}
             />
           </Grid>
         </Grid>
       </CustomForm>
     </Grid>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm
