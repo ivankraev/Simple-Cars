@@ -1,8 +1,8 @@
 import { CarsTypes } from '../containers/HomePage/types'
+
 const INITIAL_STATE = {
   isLoading: false,
 }
-
 
 const createCarReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

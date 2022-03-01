@@ -1,4 +1,4 @@
-import { AppBar, Box, Toolbar, Button } from "@mui/material";
+import { AppBar, Box, Toolbar, Button, Typography } from "@mui/material";
 import * as React from "react";
 import { logOutSuccess } from "../../LoginPage/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,13 +21,18 @@ export default function NavBar() {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            background: "lightblue",
+            background: "#3f51b5",
           }}
         >
           <img src={carLogo} alt="" />
-          <Button color="inherit" onClick={user ? logout : login}>
-            {user ? "sign out" : "sign in"}
-          </Button>
+          <Box display="flex" flexDirection="column">
+            <Typography variant="body1">
+              Welcome, {user ? user.username : "Guest"}
+            </Typography>
+            <Button color="inherit" onClick={user ? logout : login}>
+              {user ? "sign out" : "sign in"}
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

@@ -34,8 +34,8 @@ const HomePage = () => {
   const sortCars = useCallback(() => {
     let sortedCars = exampleData;
     if (user) {
-      const userCars = cars.filter((car) => car.user.id === user.id);
-      const otherCars = cars.filter((car) => car.user.id !== user.id);
+      const userCars = cars.filter((car) => car.user.id === user._id);
+      const otherCars = cars.filter((car) => car.user.id !== user._id);
       sortedCars = [...userCars, ...otherCars];
     }
     return sortedCars;
@@ -49,21 +49,29 @@ const HomePage = () => {
         title="Cars"
         options={{ addRowPosition: "first", actionsColumnIndex: -1 }}
         editable={{
-          onRowAdd: (rowData) =>
-            new Promise((resolve, reject) => {
-              resolve();
-              createCarStart(token, user, rowData);
-            }),
-          onRowUpdate: (newRowData, oldRowData) =>
-            new Promise((resolve, reject) => {
-              resolve();
-              editCarStart(token, user, newRowData);
-            }),
-          onRowDelete: (selectedRow) =>
-            new Promise((resolve, reject) => {
-              resolve();
-              deleteCarStart(token, user, selectedRow);
-            }),
+          onRowAdd: user
+            ? (rowData) =>
+                new Promise((resolve, reject) => {
+                  resolve();
+                  createCarStart(token, user, rowData);
+                })
+            : null,
+          isEditHidden: user ? (row) => row.user.id !== user._id : null,
+          onRowUpdate: user
+            ? (newRowData, oldRowData) =>
+                new Promise((resolve, reject) => {
+                  resolve();
+                  editCarStart(token, user, newRowData);
+                })
+            : null,
+          isDeleteHidden: user ? (row) => row.user.id !== user._id : null,
+          onRowDelete: user
+            ? (selectedRow) =>
+                new Promise((resolve, reject) => {
+                  resolve();
+                  deleteCarStart(token, user, selectedRow);
+                })
+            : null,
         }}
       />
     </>

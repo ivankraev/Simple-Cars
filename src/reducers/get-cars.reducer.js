@@ -1,7 +1,44 @@
 import { CarsTypes } from '../containers/HomePage/types'
 
 const INITIAL_STATE = {
-  cars: [],
+  cars: [
+    {
+      id: "3",
+      make: "BMW3",
+      model: "335i",
+      year: 2015,
+      enginType: "GASOLINE",
+      gearBox: "AUTOMATIC",
+      condition: "USED",
+      horsePower: 2300,
+      color: "white",
+      price: "2000",
+      city: "Plovdiv",
+      mileage: 100000,
+      extras: "nothing",
+      user: {
+        id: '61a7c53242b46ac58ecbd859'
+      }
+    },
+    {
+      id: "2",
+      make: "BMW2",
+      model: "335i",
+      year: 2015,
+      enginType: "GASOLINE",
+      gearBox: "AUTOMATIC",
+      condition: "USED",
+      horsePower: 2300,
+      color: "white",
+      price: "2000",
+      city: "Plovdiv",
+      mileage: 100000,
+      extras: "nothing",
+      user: {
+        id: '2'
+      }
+    },
+  ],
   isLoading: false,
 }
 

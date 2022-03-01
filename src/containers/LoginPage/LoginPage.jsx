@@ -1,6 +1,7 @@
+import React from "react";
 import { Container, Zoom } from "@mui/material";
 import LoginForm from "./LoginForm";
-import React from "react";
+
 const logInForm = (
   <Container maxWidth="xs" className="logInWrapper">
     <LoginForm />

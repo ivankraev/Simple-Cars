@@ -8,8 +8,6 @@ import {
   getCarsReducer,
 } from './index'
 
-// TODO:Import reducers
-
 /** Combine all reducers
  * @returns {Object} store
  */

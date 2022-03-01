@@ -1,5 +1,6 @@
 import { CarsTypes } from './types'
 
+//GET CARS SERVICE
 export const getCarsStart = () => ({
   type: CarsTypes.GET_CARS_START,
 })
@@ -10,7 +11,7 @@ export const getCarsSuccess = (cars) => ({
 export const getCarsFail = () => ({
   type: CarsTypes.GET_CARS_FAIL,
 })
-
+//CREATE CAR SERVICE
 export function createCarStart(token, data, user) {
   return {
     type: CarsTypes.CREATE_CAR_START,
@@ -31,6 +32,7 @@ export function createCarFail() {
     type: CarsTypes.CREATE_CAR_FAIL,
   }
 }
+//DELETE CAR SERVICE
 export function deleteCarStart(carId, userId, token) {
   return {
     type: CarsTypes.REMOVE_CAR_START,
@@ -51,6 +53,7 @@ export function deleteCarFail() {
     type: CarsTypes.REMOVE_CAR_FAIL,
   }
 }
+//EDIT CAR SERVICE
 export function editCarStart(token, user, data) {
   return {
     type: CarsTypes.EDIT_CAR_START,

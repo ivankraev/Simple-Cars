@@ -3,7 +3,7 @@ import { CAR_SERVICE } from './config'
 
 export const api = {
   deleteCar: async function (token, user, data) {
-    axios.delete(`${CAR_SERVICE}/${data.id}/${user.id}`, {
+    return axios.delete(`${CAR_SERVICE}/${data.id}/${user._id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

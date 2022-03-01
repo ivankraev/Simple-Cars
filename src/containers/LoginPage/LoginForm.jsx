@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import { Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { loginValidationSchema } from "../helpers/forms/schemas";
+import { useAuthActions } from "../../hooks/useActions";
 import { routes } from "../../utils/routes";
 import "./LoginForm.scss";
 import carLogo from "../../resources/cars.png";
 import CustomForm from "../helpers/forms/CustomForm";
 import CustomTextField from "../helpers/forms/CustomTextField";
 import CustomSubmitButton from "../helpers/CustomSubmitButton";
-import { useAuthActions } from "../../hooks/useActions";
 
 const initialValues = {
   email: "",
