@@ -1,16 +1,15 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useCallback } from 'react'
+import { useSelector } from 'react-redux'
 import { Grid, Typography } from '@mui/material'
-import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { loginValidationSchema } from '../helpers/forms/schemas'
 import { routes } from '../../utils/routes'
-import { logInStart } from './action'
 import './LoginForm.scss'
 import carLogo from '../../resources/cars.png'
 import CustomForm from '../helpers/forms/CustomForm'
 import CustomTextField from '../helpers/forms/CustomTextField'
 import CustomSubmitButton from '../helpers/CustomSubmitButton'
+import { useAuthActions } from '../../hooks/useActions'
 
 const initialValues = {
   email: '',
@@ -18,14 +17,13 @@ const initialValues = {
 }
 
 const LoginForm = () => {
-  const dispatch = useDispatch()
   const isLoading = useSelector((state) => state?.login?.isLoading)
-
+  const { logInStart } = useAuthActions()
   const loginSubmit = useCallback(
     (data) => {
-      dispatch(logInStart(data))
+      logInStart(data)
     },
-    [dispatch],
+    [logInStart],
   )
 
   return (
@@ -75,7 +73,7 @@ const LoginForm = () => {
             <img
               src={carLogo}
               alt=""
-              style={{ width: '50%', marginTop: '50px' }}
+              style={{ width: '50%', marginTop: 50 }}
             />
           </Grid>
         </Grid>

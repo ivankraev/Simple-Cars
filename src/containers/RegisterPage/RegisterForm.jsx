@@ -1,16 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { registerValidationSchema } from '../helpers/forms/schemas'
-import { registerStart } from './action'
+import { useAuthActions } from '../../hooks/useActions'
 import { routes } from '../../utils/routes'
 import '../LoginPage/LoginForm.scss'
 import CustomForm from '../helpers/forms/CustomForm'
 import CustomTextField from '../helpers/forms/CustomTextField'
 import CustomSubmitButton from '../helpers/CustomSubmitButton'
-
 const initialValues = {
   email: '',
   password: '',
@@ -19,14 +18,14 @@ const initialValues = {
 }
 
 const LoginForm = () => {
-  const dispatch = useDispatch()
   const loading = useSelector((state) => state?.login?.isLoading)
+  const { registerStart } = useAuthActions()
 
   const loginSubmit = useCallback(
     (data) => {
-      dispatch(registerStart(data))
+      registerStart(data)
     },
-    [dispatch],
+    [registerStart],
   )
 
   return (

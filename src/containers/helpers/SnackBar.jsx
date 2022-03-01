@@ -15,7 +15,7 @@ export default function SnackBar() {
     <Snackbar
       autoHideDuration={4000}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      open={errorMsg}
+      open={!!errorMsg}
       onClose={resetErr}
       message="I love snacks"
       key={errorMsg}
