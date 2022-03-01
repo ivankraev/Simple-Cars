@@ -1,0 +1,79 @@
+import { useDispatch, useSelector } from "react-redux";
+import { Grid, Typography } from "@mui/material";
+import React from "react";
+import { useCallback } from "react";
+import { Link } from "react-router-dom";
+import { registerValidationSchema } from "../helpers/forms/schemas";
+import { registerStart } from "./action";
+import { routes } from "../../utils/routes";
+import "../LoginPage/LoginForm.scss";
+import CustomForm from "../helpers/forms/CustomForm";
+import CustomTextField from "../helpers/forms/CustomTextField";
+import CustomSubmitButton from "../helpers/CustomSubmitButton";
+
+const initialValues = {
+  email: "",
+  password: "",
+  firstname: "",
+  lastname: "",
+};
+
+const LoginForm = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state?.login?.isLoading);
+
+  const loginSubmit = useCallback(
+    (data) => {
+      dispatch(registerStart(data));
+    },
+    [dispatch]
+  );
+
+  return (
+    <Grid container direction="column" component="section">
+      <CustomForm
+        onSubmit={loginSubmit}
+        initialValues={initialValues}
+        validationSchema={registerValidationSchema}
+      >
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Typography variant="h5">Sign up</Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <CustomTextField
+              type="text"
+              name="firstname"
+              label="First name"
+              autoFocus
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <CustomTextField type="text" name="lastname" label="Last name" />
+          </Grid>
+          <Grid item xs={12}>
+            <CustomTextField type="text" name="email" label="Email" />
+          </Grid>
+          <Grid item xs={12}>
+            <CustomTextField type="password" name="password" label="Password" />
+          </Grid>
+
+          <Grid item xs={12}>
+            <CustomSubmitButton loading={loading} fullWidth label="register" />
+          </Grid>
+          <Grid item xs={12} textAlign="center">
+            <span>
+              Already have an account?
+              <Link to={routes.auth.login} className="link">
+                {" "}
+                Sign in
+              </Link>
+            </span>
+          </Grid>
+        </Grid>
+      </CustomForm>
+    </Grid>
+  );
+};
+
+export default LoginForm;

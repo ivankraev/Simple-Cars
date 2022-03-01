@@ -1,0 +1,32 @@
+.link {
+  text-decoration: none;
+  color: blue;
+}
+
+.error {
+  color: red;
+}
+
+.registerImage {
+  background: url("https://minimal-assets-api.vercel.app/assets/illustrations/illustration_register.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40%;
+  height: 100%;
+}
+
+.logInContainer {
+  display: flex !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../resources/background/carSideMIrror.jpg");
+  background-size: cover;
+}
+.logInWrapper {
+  background-color: rgba(255, 255, 255, 1);
+  padding-block: 24px;
+  border-radius: 8px;
+}
