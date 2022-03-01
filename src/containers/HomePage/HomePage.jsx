@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { tableTitleColumns } from "../../common/tableTitleColumns";
 import { useCrudActions } from "../../hooks/useActions";
+import { isEqual } from "lodash";
 import MaterialTable from "material-table";
 
 const exampleData = [
@@ -61,6 +62,9 @@ const HomePage = () => {
             ? (newRowData, oldRowData) =>
                 new Promise((resolve, reject) => {
                   resolve();
+                  //CHECKS IF NEW AND OLD DATA ARE EQUAL AND RETURNS IF SO
+                  const { tableData, ...otherProps } = oldRowData;
+                  if (isEqual(newRowData, { ...otherProps })) return;
                   editCarStart(token, user, newRowData);
                 })
             : null,

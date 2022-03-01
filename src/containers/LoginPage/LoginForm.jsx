@@ -10,6 +10,7 @@ import carLogo from "../../resources/cars.png";
 import CustomForm from "../helpers/forms/CustomForm";
 import CustomTextField from "../helpers/forms/CustomTextField";
 import CustomSubmitButton from "../helpers/CustomSubmitButton";
+import Copyright from "../helpers/Copyright";
 
 const initialValues = {
   email: "",
@@ -72,6 +73,7 @@ const LoginForm = () => {
               Continue to catalog
             </Link>
             <img src={carLogo} alt="" style={{ width: "50%", marginTop: 50 }} />
+            <Copyright />
           </Grid>
         </Grid>
       </CustomForm>
