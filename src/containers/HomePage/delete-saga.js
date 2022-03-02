@@ -1,6 +1,6 @@
 import { put, call, take } from 'redux-saga/effects'
 import { CarsTypes } from './types'
-import { deleteCarSuccess, deleteCarFail } from './action'
+import { deleteCarSuccess, deleteCarFail, getCarsStart } from './action'
 import { setError } from '../LoginPage/action'
 
 export function* deleteCarRequest(api, carId, userId, token) {
@@ -8,7 +8,7 @@ export function* deleteCarRequest(api, carId, userId, token) {
     const { data } = yield call(api.deleteCar, carId, userId, token)
     yield put(deleteCarSuccess(data))
     setError('Car removed', 'success')
-    yield take(CarsTypes.GET_CARS_START)
+    yield put(getCarsStart())
   } catch (error) {
     yield put(deleteCarFail())
     yield put(setError(error.message, 'error'))

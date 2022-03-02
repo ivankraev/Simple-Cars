@@ -9,7 +9,6 @@ export function* getCarsRequest(api) {
     yield put(getCarsSuccess(data))
   } catch (error) {
     yield put(getCarsFail())
-    yield put(setError(error.message, 'error'))
   }
 }
 export function* getCarsStart(api) {
