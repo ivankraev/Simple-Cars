@@ -1,7 +1,6 @@
 import { put, call, take } from 'redux-saga/effects'
 import { CarsTypes } from './types'
 import { getCarsSuccess, getCarsFail } from './action'
-import { setError } from '../LoginPage/action'
 
 export function* getCarsRequest(api) {
   try {

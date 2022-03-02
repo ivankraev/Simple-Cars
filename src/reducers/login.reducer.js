@@ -1,13 +1,18 @@
 import { LogInTypes } from '../containers/LoginPage/types'
 import { RegisterTypes } from '../containers/RegisterPage/types'
-
+/** Store states
+ * @constant {Object} */
 const INITIAL_STATE = {
   isLoading: false,
   user: null,
   errorMsg: null,
   errorType: null,
 }
-
+/** Login reducer.
+ * @param {Object} state - Initial state 
+ * @param {Object} action - Payload object
+ * @return {Object} - return new state
+ */
 const logInReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LogInTypes.LOGIN_START:
@@ -44,7 +49,6 @@ const logInReducer = (state = INITIAL_STATE, action) => {
         ...state,
         errorMsg: action.payload.msg,
         errorType: action.payload.errorType,
-
       }
     default:
       return state

@@ -31,7 +31,7 @@ const HomePage = () => {
   useEffect(() => {
     getCarsStart()
   }, [])
-
+  console.log(cars)
   return (
     <>
       <MaterialTable

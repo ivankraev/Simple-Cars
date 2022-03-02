@@ -12,7 +12,9 @@ import { api as createCarApi } from '../api/carsBackend/createCarApi'
 import { api as getCarsApi } from '../api/carsBackend/getCarsApi'
 import { api as editCarApi } from '../api/carsBackend/editCarApi'
 import { api as deleteCarApi } from '../api/carsBackend/removeCarApi'
-
+/** Root saga.
+ * @return {Object} - return store
+ */
 export default function* rootSaga() {
   yield all([
     logInStart(logInApi),
