@@ -7,7 +7,8 @@ import { useCrudActions, useAuthActions } from "../../hooks/useActions";
 import { isEqual } from "lodash";
 
 const validateRow = (row) => {
-  return Object.values(row).length === 12;
+  //CHECKS IF THE INPUT HAS NO EMPTY FIELDS
+  return Object.values(row).length === tableTitleColumns.length;
 };
 
 const HomePage = () => {
