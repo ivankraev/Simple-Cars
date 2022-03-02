@@ -5,6 +5,11 @@ import MaterialTable from "material-table";
 import { tableTitleColumns } from "../../common/tableTitleColumns";
 import { useCrudActions, useAuthActions } from "../../hooks/useActions";
 import { isEqual } from "lodash";
+
+const validateRow = (row) => {
+  return Object.values(row).length === 12;
+};
+
 const HomePage = () => {
   // ALL CRUD ACTIONS
   const { getCarsStart, createCarStart, deleteCarStart, editCarStart } =
@@ -28,10 +33,6 @@ const HomePage = () => {
   useEffect(() => {
     getCarsStart();
   }, []);
-
-  const validateRow = (row) => {
-    return Object.values(row).length === 12;
-  };
 
   return (
     <>
