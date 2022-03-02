@@ -3,12 +3,13 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import MaterialTable from "material-table";
 import { tableTitleColumns } from "../../common/tableTitleColumns";
-import { useCrudActions } from "../../hooks/useActions";
+import { useCrudActions, useAuthActions } from "../../hooks/useActions";
 import { isEqual } from "lodash";
 const HomePage = () => {
   // ALL CRUD ACTIONS
   const { getCarsStart, createCarStart, deleteCarStart, editCarStart } =
     useCrudActions();
+  const { setError } = useAuthActions();
   //USER AND CARS INFORMATION
   const token = useSelector((state) => state.login.user?.accessToken);
   const user = useSelector((state) => state.login.user);
@@ -44,7 +45,9 @@ const HomePage = () => {
             ? (rowData) =>
                 new Promise((resolve) => {
                   resolve();
-                  validateRow(rowData) && createCarStart(token, user, rowData);
+                  validateRow(rowData)
+                    ? createCarStart(token, user, rowData)
+                    : setError("Incorrect input", "error");
                 })
             : null,
           isEditHidden: user ? (row) => row.user.id !== user._id : null,
