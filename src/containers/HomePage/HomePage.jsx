@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
+import { isEqual } from "lodash";
 import MaterialTable from "material-table";
 import { tableTitleColumns } from "../../common/tableTitleColumns";
 import { useCrudActions, useAuthActions } from "../../hooks/useActions";
-import { isEqual } from "lodash";
 
 const validateRow = (row) => {
   //CHECKS IF THE INPUT HAS NO EMPTY FIELDS
@@ -47,6 +46,7 @@ const HomePage = () => {
             ? (rowData) =>
                 new Promise((resolve) => {
                   resolve();
+
                   validateRow(rowData)
                     ? createCarStart(token, user, rowData)
                     : setError("Incorrect input", "error");

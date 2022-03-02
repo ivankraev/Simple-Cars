@@ -12,13 +12,13 @@ export const getCarsFail = () => ({
   type: CarsTypes.GET_CARS_FAIL,
 })
 //CREATE CAR SERVICE
-export function createCarStart(token, data, user) {
+export function createCarStart(token, user, data) {
   return {
     type: CarsTypes.CREATE_CAR_START,
     payload: {
       token,
-      data,
       user,
+      data,
     },
   }
 }
