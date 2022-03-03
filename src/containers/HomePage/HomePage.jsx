@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { isEqual } from "lodash";
+import { isEqual, reject } from "lodash";
 import MaterialTable from "material-table";
 import { tableTitleColumns } from "../../common/tableTitleColumns";
 import { useCrudActions, useAuthActions } from "../../hooks/useActions";
@@ -45,13 +45,18 @@ const HomePage = () => {
         isDeleteHidden: user ? (row) => row.user._id !== user._id : null,
         onRowAdd: user
           ? (rowData) =>
-              new Promise((resolve) => {
+              new Promise((resolve, reject) => {
+                const isDataValid = validateRow(rowData);
+                const timer = !isDataValid ? 0 : 800;
                 setTimeout(() => {
-                  validateRow(rowData)
-                    ? createCarStart(token, user, rowData)
-                    : setError("Incorrect input", "error");
-                  resolve();
-                }, 800);
+                  if (!isDataValid) {
+                    setError("Incorrect input", "error");
+                    reject();
+                  } else {
+                    createCarStart(token, user, rowData);
+                    resolve();
+                  }
+                }, timer);
               })
           : null,
 
