@@ -6,6 +6,6 @@
 
 > yarn start
 
-# Avaiablea at
+# Avaiable at
 
 > https://simple-cars-7ec8f.web.app
