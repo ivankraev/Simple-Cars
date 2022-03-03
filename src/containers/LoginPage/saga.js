@@ -5,11 +5,12 @@ import { setError } from '../LoginPage/action'
 
 export function* logInRequest(api, user) {
     try {
-        const { data } = yield call(api.login, user.email, user.password)
+        const { data } = yield call(api.login, user.username, user.password)
         yield put(logInSuccess(data))
         yield put(setError('Logged in', 'success'))
     } catch (error) {
         yield put(logInFail())
+        console.log(error)
         yield put(setError(error.message, 'error'))
     }
 }

@@ -13,7 +13,7 @@ import CustomSubmitButton from "../helpers/CustomSubmitButton";
 import Copyright from "../helpers/Copyright";
 
 const initialValues = {
-  email: "",
+  username: "",
   password: "",
 };
 
@@ -42,8 +42,8 @@ const LoginForm = () => {
           <Grid item xs={12}>
             <CustomTextField
               type="text"
-              label="Email"
-              name="email"
+              label="Username"
+              name="username"
               required
               autoFocus
             />

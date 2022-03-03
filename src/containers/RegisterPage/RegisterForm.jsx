@@ -1,33 +1,33 @@
-import { useSelector } from "react-redux";
-import { Grid, Typography } from "@mui/material";
-import React from "react";
-import { useCallback } from "react";
-import { Link } from "react-router-dom";
-import { registerValidationSchema } from "../helpers/forms/schemas";
-import { useAuthActions } from "../../hooks/useActions";
-import { routes } from "../../utils/routes";
-import "../LoginPage/LoginForm.scss";
-import CustomSubmitButton from "../helpers/CustomSubmitButton";
-import CustomTextField from "../helpers/forms/CustomTextField";
-import CustomForm from "../helpers/forms/CustomForm";
-import Copyright from "../helpers/Copyright";
+import { useSelector } from 'react-redux'
+import { Grid, Typography } from '@mui/material'
+import React from 'react'
+import { useCallback } from 'react'
+import { Link } from 'react-router-dom'
+import { registerValidationSchema } from '../helpers/forms/schemas'
+import { useAuthActions } from '../../hooks/useActions'
+import { routes } from '../../utils/routes'
+import '../LoginPage/LoginForm.scss'
+import CustomSubmitButton from '../helpers/CustomSubmitButton'
+import CustomTextField from '../helpers/forms/CustomTextField'
+import CustomForm from '../helpers/forms/CustomForm'
+import Copyright from '../helpers/Copyright'
 const initialValues = {
-  email: "",
-  password: "",
-  firstname: "",
-  lastname: "",
-};
+  firstname: '',
+  lastname: '',
+  username: '',
+  password: '',
+}
 
 const LoginForm = () => {
-  const loading = useSelector((state) => state?.login?.isLoading);
-  const { registerStart } = useAuthActions();
+  const loading = useSelector((state) => state?.login?.isLoading)
+  const { registerStart } = useAuthActions()
 
   const loginSubmit = useCallback(
     (data) => {
-      registerStart(data);
+      registerStart(data)
     },
-    [registerStart]
-  );
+    [registerStart],
+  )
 
   return (
     <Grid container direction="column" component="section">
@@ -52,7 +52,7 @@ const LoginForm = () => {
             <CustomTextField type="text" name="lastname" label="Last name" />
           </Grid>
           <Grid item xs={12}>
-            <CustomTextField type="text" name="email" label="Email" />
+            <CustomTextField type="text" name="username" label="Username" />
           </Grid>
           <Grid item xs={12}>
             <CustomTextField type="password" name="password" label="Password" />
@@ -64,7 +64,7 @@ const LoginForm = () => {
             <span>
               Already have an account?
               <Link to={routes.auth.login} className="link">
-                {" "}
+                {' '}
                 Sign in
               </Link>
             </span>
@@ -74,7 +74,7 @@ const LoginForm = () => {
         </Grid>
       </CustomForm>
     </Grid>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm
