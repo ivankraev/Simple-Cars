@@ -1,10 +1,10 @@
 # Install dependencies
 
-> npm install
+> yarn
 
 # Start app
 
-> npm start
+> yarn start
 
 # Avaiablea at
 
