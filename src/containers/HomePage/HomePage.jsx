@@ -36,10 +36,10 @@ const HomePage = () => {
 
   return (
     <MaterialTable
+      title="Car list"
       columns={tableTitleColumns}
       data={sortCars}
-      title="Cars"
-      options={{ addRowPosition: "first", actionsColumnIndex: -1 }}
+      options={{ addRowPosition: "first" }}
       editable={{
         isEditHidden: user ? (row) => row.user._id !== user._id : null,
         isDeleteHidden: user ? (row) => row.user._id !== user._id : null,
