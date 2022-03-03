@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { isEqual, reject } from "lodash";
+import { isEqual } from "lodash";
 import MaterialTable from "material-table";
 import { tableTitleColumns } from "../../common/tableTitleColumns";
 import { useCrudActions, useAuthActions } from "../../hooks/useActions";

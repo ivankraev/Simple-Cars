@@ -20,7 +20,11 @@ export default function SnackBar() {
       onClose={resetErr}
       message="I love snacks"
       key={errorMsg}
-      children={<Alert severity={errorType}>{errorMsg}</Alert>}
+      children={
+        <Alert variant="outlined" severity={errorType}>
+          {errorMsg}
+        </Alert>
+      }
     />
   );
 }
