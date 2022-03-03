@@ -40,8 +40,8 @@ const HomePage = () => {
       data={sortCars}
       options={{ addRowPosition: "first" }}
       editable={{
-        isEditHidden: user ? (row) => row.user._id !== user._id : null,
-        isDeleteHidden: user ? (row) => row.user._id !== user._id : null,
+        isEditable: (row) => row.user._id === user._id,
+        isDeletable: (row) => row.user._id === user._id,
         onRowAdd: user
           ? (rowData) =>
               new Promise((resolve, reject) => {
