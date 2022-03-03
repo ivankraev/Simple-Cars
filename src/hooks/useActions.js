@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { registerStart } from '../containers/RegisterPage/action'
+import { redirect } from '../components/CustomRedirect/actions'
 import * as CrudActions from '../containers/HomePage/action'
 import * as AuthActions from '../containers/LoginPage/action'
 
@@ -13,5 +14,5 @@ export const useCrudActions = () => {
 
 export const useAuthActions = () => {
   const dispatch = useDispatch()
-  return bindActionCreators({ ...AuthActions, registerStart }, dispatch)
+  return bindActionCreators({ ...AuthActions, registerStart, redirect }, dispatch)
 }

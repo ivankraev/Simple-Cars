@@ -8,7 +8,6 @@ import { useCrudActions, useAuthActions } from "../../hooks/useActions";
 const validateRow = (row) => {
   return Object.values(row).length === tableTitleColumns.length;
 };
-
 const HomePage = () => {
   // ALL CRUD ACTIONS
   const { getCarsStart, createCarStart, deleteCarStart, editCarStart } =
@@ -59,7 +58,6 @@ const HomePage = () => {
                 }, timer);
               })
           : null,
-
         onRowUpdate: user
           ? (newRowData, oldRowData) =>
               new Promise((resolve, reject) => {
