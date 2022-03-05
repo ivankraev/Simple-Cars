@@ -33,12 +33,13 @@ export function createCarFail() {
   }
 }
 //DELETE CAR SERVICE
-export function deleteCarStart(token, car) {
+export function deleteCarStart(token, data, cars) {
   return {
     type: CarsTypes.REMOVE_CAR_START,
     payload: {
       token,
-      car,
+      data,
+      cars
     },
   }
 }
@@ -53,13 +54,14 @@ export function deleteCarFail() {
   }
 }
 //EDIT CAR SERVICE
-export function editCarStart(token, id, data) {
+export function editCarStart(token, id, data, cars) {
   return {
     type: CarsTypes.EDIT_CAR_START,
     payload: {
       token,
-      data,
       id,
+      data,
+      cars
     },
   }
 }

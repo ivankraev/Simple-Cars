@@ -69,7 +69,7 @@ const HomePage = () => {
                     setError("Your input matches the current", "error");
                     reject();
                   } else {
-                    editCarStart(token, oldRowData._id, newRowData);
+                    editCarStart(token, oldRowData._id, newRowData, cars);
                     resolve();
                   }
                 }, timer);
@@ -79,7 +79,7 @@ const HomePage = () => {
           ? (selectedRow) =>
               new Promise((resolve) => {
                 setTimeout(() => {
-                  deleteCarStart(token, selectedRow);
+                  deleteCarStart(token, selectedRow, cars);
                   resolve();
                 }, 800);
               })

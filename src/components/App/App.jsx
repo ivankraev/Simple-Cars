@@ -23,12 +23,12 @@ function App() {
   const { user } = useSelector((state) => state.login);
   const { redirect } = useAuthActions();
   const { pathname } = window.location;
-  
+
   const showHandler = useMemo(() => {
     const path = pathname.slice(1);
-    const auth = user && authPaths[path];
-    const navbar = !authPaths[path];
-    return { auth, navbar };
+    const isAuth = user && authPaths[path];
+    const isNavbarVisible = !authPaths[path];
+    return { isAuth, isNavbarVisible };
   }, [pathname, user]);
 
   useEffect(() => {
@@ -39,8 +39,8 @@ function App() {
     <div className="App">
       <SnackBar />
       <CustomRedirect />
-      {showHandler.auth && <Redirect to="/cars" />}
-      {showHandler.navbar && <NavBar />}
+      {showHandler.isAuth && <Redirect to="/cars" />}
+      {showHandler.isNavbarVisible && <NavBar />}
       <Switch>
         <Redirect push exact from="/" to="/login" />
         <Route exact path="/cars" component={HomePage} />
